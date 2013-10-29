@@ -13,34 +13,15 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        // specify contact search criteria
-        var options = new ContactFindOptions();
-        options.filter = "";      // empty search string returns all contacts
-        options.multiple = true;  // return multiple results
-        filter = ["displayName"]; // return contact.displayName field
-
-        // find contacts
-        navigator.contacts.find(filter, onSuccess, onError, options);
-    }
-
-    // onSuccess: Get a snapshot of the current contacts
-    //
-    function onSuccess(contacts) {
-        for (var i=0; i<contacts.length; i++) {
-            alert(contacts[i].displayName);
-        }
-    };
-
-    // onError: Failed to get the contacts
-    //
-    function onError(contactError) {
-        alert('onError!');
+        var myContact = navigator.contacts.create({"displayName": "Test User"});
+        myContact.note = "This contact has a note.";
+        console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
     }
 
     </script>
   </head>
   <body>
     <h1>Example</h1>
-    <p>Find Contacts</p>
+    <p>Create Contact</p>
   </body>
 </html>
